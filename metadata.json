@@ -1,0 +1,6 @@
+{
+  "name": "Ollama VS Code Agent & VSIX Hub",
+  "description": "Complete Ollama-powered AI coding agent for VS Code with all API endpoints, offline code analysis, AST diagnostics, and downloadable .vsix extension package.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

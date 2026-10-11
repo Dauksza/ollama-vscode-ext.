@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ollama VS Code Agent & VSIX Hub</title>
+    <meta name="description" content="Complete Ollama-powered AI coding agent for VS Code with all API endpoints, offline code analysis, AST diagnostics, and downloadable .vsix extension package." />
+    <meta property="og:title" content="Ollama VS Code Agent & VSIX Hub" />
+    <meta property="og:description" content="Complete Ollama-powered AI coding agent for VS Code with all API endpoints, offline code analysis, AST diagnostics, and downloadable .vsix extension package." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+    <script>
+      window.addEventListener('error', function(event) {
+        if (event.message && (event.message.includes('WebSocket') || event.message.includes('createWebSocketModuleRunnerTransport') || event.message.includes('@vite/client'))) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event.reason && (String(event.reason).includes('WebSocket') || String(event.reason).includes('createWebSocketModuleRunnerTransport') || String(event.reason).includes('@vite/client'))) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

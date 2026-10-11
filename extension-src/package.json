@@ -1,0 +1,157 @@
+{
+  "name": "ollama-code-agent",
+  "displayName": "Ollama Code Agent (Offline AI & AST Analysis)",
+  "description": "Autonomous offline AI coding agent powered by local Ollama models. Seamless FIM inline completion, multi-turn chat, AST vulnerability scanning, and semantic code analysis without internet access.",
+  "version": "1.0.0",
+  "publisher": "local-ai-tools",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/local-ai-tools/ollama-code-agent"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Machine Learning",
+    "Education"
+  ],
+  "keywords": [
+    "ollama",
+    "offline",
+    "local-ai",
+    "deepseek-coder",
+    "qwen2.5-coder",
+    "codellama",
+    "code-completion",
+    "copilot-alternative"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ollama-sidebar-container",
+          "title": "Ollama Local Agent",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "ollama-sidebar-container": [
+        {
+          "type": "webview",
+          "id": "ollama.chatView",
+          "name": "Ollama Assistant"
+        },
+        {
+          "type": "tree",
+          "id": "ollama.diagnosticsView",
+          "name": "Offline AST & Security Diagnostics"
+        },
+        {
+          "type": "tree",
+          "id": "ollama.modelManager",
+          "name": "Local Models & VRAM"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ollama.triggerCompletion",
+        "title": "Trigger Inline Code Completion",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.explainSelection",
+        "title": "Explain Selected Code",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.refactorSelection",
+        "title": "Refactor Code (Performance & Cleanliness)",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.generateUnitTests",
+        "title": "Generate Unit Tests for Selection",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.analyzeFile",
+        "title": "Run Offline AST & Security Scan",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.scanWorkspace",
+        "title": "Scan Entire Workspace Architecture & Security",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.openSettings",
+        "title": "Configure Local Endpoints & Models",
+        "category": "Ollama"
+      },
+      {
+        "command": "ollama.refreshModels",
+        "title": "Refresh Local Models List",
+        "category": "Ollama"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ollama.triggerCompletion",
+        "key": "ctrl+alt+space",
+        "mac": "cmd+alt+space",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "ollama.explainSelection",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorHasSelection"
+      }
+    ],
+    "configuration": {
+      "title": "Ollama Code Agent",
+      "properties": {
+        "ollama.endpoint": {
+          "type": "string",
+          "default": "http://127.0.0.1:11434",
+          "description": "Local or LAN base URL for Ollama server."
+        },
+        "ollama.chatModel": {
+          "type": "string",
+          "default": "qwen2.5-coder:7b",
+          "description": "Model used for multi-turn assistant chat and code refactoring."
+        },
+        "ollama.autocompleteModel": {
+          "type": "string",
+          "default": "deepseek-coder:6.7b",
+          "description": "Fast model used for Fill-In-The-Middle (FIM) inline completions."
+        },
+        "ollama.embeddingModel": {
+          "type": "string",
+          "default": "nomic-embed-text",
+          "description": "Model used for offline codebase semantic indexing and symbol embeddings."
+        },
+        "ollama.enableInlineCompletion": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable ghost-text inline completion as you type."
+        },
+        "ollama.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Sampling temperature (lower = more deterministic code)."
+        }
+      }
+    }
+  }
+}
